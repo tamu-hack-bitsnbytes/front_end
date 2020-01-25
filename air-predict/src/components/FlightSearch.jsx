@@ -1,34 +1,34 @@
 import React, {useState} from "react";
 
 import styled from 'styled-components'
+import axios from "axios"
 
 const FlightSearch = (props) => {
     console.log('props from app', props);
 
     const [search, setSearch] = useState({
-        destination: '', 
-        departure_location: '',
-        departure_date: '',
-        departure_time: ''
+        dest: '', 
+        source: '',
+        date: ''
     })
     const handleChange = e => {
         setSearch({ ...search, [e.target.name]: e.target.value })
       }
+    console.log('after post', search)
 
     const SubmitForm = e => {
         e.preventDefault()
-        props.history.push('/flightresults')
-        // axios 
-        // .post("endpoint goes here", search)
-        //     .then(res => {
-        //         console.log('response from post request', res.data)
-        //         setSearch({...search})
-        //         props.history.push('endpoint route goes here')
+        axios 
+        .post("http://10.237.213.78:8000/airline/get_flights/", search)
+      
+            .then(res => {
+                console.log('response from post request', res)
+                // props.history.push('/flightresults')
 
-        //     })
-        //     .catch(err => {
-        //         console.error(err)
-        //     })
+            })
+            .catch(err => {
+                console.log('error from post',err.response)
+            })
     }
     
     return (
@@ -38,30 +38,23 @@ const FlightSearch = (props) => {
             <form onSubmit={SubmitForm}>
                     <input
                         type="text"
-                        name="destination"
+                        name="dest"
                         placeholder="enter destination"
-                        value={search.destination}
+                        value={search.dest}
                         onChange={handleChange}
                     />
                     <input
                         type="text"
-                        name="departure_location"
+                        name="source"
                         placeholder="Enter Departure Location"
-                        value={search.departure_location}
+                        value={search.source}
                         onChange={handleChange}
                     />
                      <input
                         type="date"
-                        name="departure_date"
+                        name="date"
                         placeholder="Enter departure Date"
-                        value={search.departure_date}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type="time"
-                        name="departure_time"
-                        placeholder="enter departure time"
-                        value={search.departure_time}
+                        value={search.date}
                         onChange={handleChange}
                     />
                 <button>Search Flights</button>
