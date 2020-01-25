@@ -32,10 +32,10 @@ const FlightSearch = (props) => {
     }
     
     return (
-        <div>
-            <h3>FlightSearch</h3>
+        <Main>
+            <h3>Search For Flights</h3>
+            <FormContainer>
             <form onSubmit={SubmitForm}>
-                <div>
                     <input
                         type="text"
                         name="destination"
@@ -64,14 +64,30 @@ const FlightSearch = (props) => {
                         value={search.departure_time}
                         onChange={handleChange}
                     />
-                </div>
                 <button>Search Flights</button>
+            
             </form>
-        </div>
+            </FormContainer>
+        </Main>
     )
 }
 
 export default FlightSearch;
 
 
+const Main = styled.div`
+border: 1px solid black;
+height: 99vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+
+`
+
+const FormContainer = styled.div`
+border: 1px solid black;
+padding: 1%;
+
+`
 
