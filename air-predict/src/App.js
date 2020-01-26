@@ -5,6 +5,8 @@ import FlightSearch from "./components/FlightSearch"
 import GetFlights from "./components/GetFlights"
 import RecepientForm from './components/RecepientForm';
 import RecepientInfo from './components/RecepientInfo';
+import FlightForm from "./components/FlightForm"
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
       <Route path = "/flightresults" component={GetFlights} />
       <Route path = "/incomingflights" component={RecepientForm} />
       <Route path = "/recepient_flight/id:" component={RecepientInfo} /> 
+      <Route path = "/flightresultsnow" component={FlightForm} />
       </Switch>
     </div>
   );

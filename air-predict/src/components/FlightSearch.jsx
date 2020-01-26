@@ -22,7 +22,7 @@ const FlightSearch = (props) => {
                 const dataRes = res.data;
                 console.log('response from post request', dataRes)
                 setSearch({...search})
-                setData(dataRes)
+                sessionStorage.setItem('response', res.data)
                 props.history.push('/flightresults')
             })
             .catch(err => {
