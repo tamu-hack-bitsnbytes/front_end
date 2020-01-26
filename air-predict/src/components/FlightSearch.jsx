@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import styled from 'styled-components'
 import axios from "axios"
 
+import GetFlights from "./GetFlights"
+
 const FlightSearch = (props) => {
     console.log('props from app', props);
 
@@ -11,6 +13,9 @@ const FlightSearch = (props) => {
         source: '',
         date: ''
     })
+
+    const [data, setData] = useState({})
+
     const handleChange = e => {
         setSearch({ ...search, [e.target.name]: e.target.value })
       }
@@ -21,8 +26,10 @@ const FlightSearch = (props) => {
         axios 
         .post("http://10.237.213.78:8000/airline/get_flights/", search)
             .then(res => {
-                console.log('response from post request', res)
+                const dataRes = res.data;
+                console.log('response from post request', dataRes)
                 setSearch({...search})
+                setData(dataRes)
                 props.history.push('/flightresults')
 
             })
@@ -30,6 +37,10 @@ const FlightSearch = (props) => {
                 console.log('error from post',err)
             })
     }
+
+    console.log('porfavore', data)
+    
+    
     
     return (
         <Main>
@@ -61,6 +72,9 @@ const FlightSearch = (props) => {
             
             </form>
             </FormContainer>
+            {/* <GetFlights
+            data={data}
+            /> */}
         </Main>
     )
 }
