@@ -12,9 +12,9 @@ const RecepientInfo = (props) => {
     return (
         <div>
         <Card>
-            <h3>flight: {props.flight}</h3>
-            <p>Destination: {props.arrival}</p>
-            <p>Origin:{props.from}</p>
+            <h3>Flight: {props.flight}</h3>
+            <p>Arrival Time: {props.arrival}</p>
+            <p>Flight Origin: {props.from}</p>
             <Button onClick={NextCard}>More Info</Button>
         </Card>
         </div>
