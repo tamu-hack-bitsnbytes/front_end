@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import styled from 'styled-components'
 import axios from "axios"
 
-import GetFlights from "./GetFlights"
+// import GetFlights from "./GetFlights"
 
 const FlightSearch = (props) => {
     console.log('props from app', props);
@@ -13,9 +13,7 @@ const FlightSearch = (props) => {
         source: '',
         date: ''
     })
-
-    const [data, setData] = useState({})
-
+    
     const handleChange = e => {
         setSearch({ ...search, [e.target.name]: e.target.value })
       }
@@ -29,7 +27,7 @@ const FlightSearch = (props) => {
                 const dataRes = res.data;
                 console.log('response from post request', dataRes)
                 setSearch({...search})
-                setData(dataRes)
+                sessionStorage.setItem('response', res.data)
                 props.history.push('/flightresults')
 
             })
@@ -37,10 +35,6 @@ const FlightSearch = (props) => {
                 console.log('error from post',err)
             })
     }
-
-    console.log('porfavore', data)
-    
-    
     
     return (
         <Main>
