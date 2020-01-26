@@ -4,22 +4,32 @@ import {TestData} from "../utils/TestData"
 
 import FlightCard from "./FlightCard"
 
-const GetFlights = () => {
+import styled from 'styled-components'
+
+const GetFlights = (props) => {
 
     const [data] = useState(TestData)
 
     return (
-        <div>
+        <Box>
         {data.map(e =>(
             <FlightCard
             flight={e.flightNumber}
             origin={e.origin.city}
             destination={e.destination.city}
+            departure={e.departureTime}
+            {...props}
 
             />
         ))}
-        </div>
+        </Box>
     )
 }
 
 export default GetFlights;
+
+const Box = styled.div`
+border: 1px solid black;
+background-color: #4169E1;
+
+`

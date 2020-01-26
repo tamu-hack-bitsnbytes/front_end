@@ -1,23 +1,43 @@
-import React from "react"
-import "rbx/index.css"
-import {
-    Card, List, Container
-} from "rbx"
-export default () => {
+import React from "react";
+
+import styled from 'styled-components'
+
+const RecepientInfo = (props) => {
+    const id = props.flight
+
+
+   const NextCard = () => {
+       props.history.push(`/recepientflight/${id}`)
+   }
     return (
-        <Container>
-            <Card>
-                <Card.Header>
-                    <Card.Header.Title>Flight: AA-01</Card.Header.Title>
-                </Card.Header>
-                <Card.Body>
-                    <List>
-                        <List.Item>T Shirts x 500</List.Item>
-                        <List.Item>Corn Meal x 100Lbs</List.Item>
-                    </List>
-                </Card.Body>
-                <Card.Footer>Arrival : 2020-02-01 12:38:00</Card.Footer>
-            </Card>
-        </Container>
+        <div>
+        <Card>
+            <h3>flight: {props.flight}</h3>
+            <p>Destination: {props.arrival}</p>
+            <p>Origin:{props.from}</p>
+            <Button onClick={NextCard}>More Info</Button>
+        </Card>
+        </div>
     )
 }
+
+export default RecepientInfo;
+
+const Card = styled.div`
+border:1px solid black;
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 5%;
+padding: 1%;
+box-shadow: 8px 5px 5px black;
+background-color: #fff;
+`
+
+const Button = styled.button`
+padding: 0.5%;
+background-color: #4169E1;
+color: #fff;
+
+`

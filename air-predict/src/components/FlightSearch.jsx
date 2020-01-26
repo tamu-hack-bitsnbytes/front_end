@@ -35,21 +35,21 @@ const FlightSearch = (props) => {
             <h3>Search For Flights</h3>
             <FormContainer>
             <form onSubmit={SubmitForm}>
-                    <input
+                    <Input
                         type="text"
                         name="dest"
                         placeholder="enter destination"
                         value={search.dest}
                         onChange={handleChange}
                     />
-                    <input
+                    <Input
                         type="text"
                         name="source"
                         placeholder="Enter Departure Location"
                         value={search.source}
                         onChange={handleChange}
                     />
-                     <input
+                     <Input
                         type="date"
                         name="date"
                         placeholder="Enter departure Date"
@@ -67,14 +67,22 @@ const FlightSearch = (props) => {
 }
 export default FlightSearch;
 const Main = styled.div`
-border: 1px solid black;
 height: 99vh;
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+
+
+
 `
 const FormContainer = styled.div`
-border: 1px solid black;
-padding: 1%;
+padding: 2%;
+background-color:#4169E1;
+box-shadow: 8px 5px 5px black;
+
+`
+
+const Input = styled.input`
+
 `
