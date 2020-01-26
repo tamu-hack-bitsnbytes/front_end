@@ -18,7 +18,7 @@ const MoreInfo = (props) => {
   
     return (
         <Card>
-            <h2>Coming from Flight Number: {info.id}</h2>
+            <h2>Coming from Flight: {info.id}</h2>
             {data.map(e => {
                 return (
                     <Border>
