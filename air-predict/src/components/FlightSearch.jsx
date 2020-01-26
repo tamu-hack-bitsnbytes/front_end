@@ -20,14 +20,14 @@ const FlightSearch = (props) => {
         e.preventDefault()
         axios 
         .post("http://10.237.213.78:8000/airline/get_flights/", search)
-      
             .then(res => {
                 console.log('response from post request', res)
-                // props.history.push('/flightresults')
+                setSearch({...search})
+                props.history.push('/flightresults')
 
             })
             .catch(err => {
-                console.log('error from post',err.response)
+                console.log('error from post',err)
             })
     }
     
